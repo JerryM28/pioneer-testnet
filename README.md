@@ -40,4 +40,35 @@ bisa memasukan 2 private key atau lebih
 lalu save
 
 # ini bisa dijalankan aplikasi termux
+>install termux via fdroid jangan yang di playstore
+
+```
+pkg install git
+
+pkg install nodejs
+or
+pkg install nodejs-lts
+
+git clone https://github.com/JerryM28/pioneer-testnet
+
+cd pioneer-testnet
+
+npm instakl
+
+ls
+
+```
+edit file rpc.txt dan privateKeys.json
+
+```
+nano rpc.txt
+```
+isi dengan benar, jika sudah save. ctrl+x+y
+
+jalankan script
+```
+node index.js
+```
+
+
 
