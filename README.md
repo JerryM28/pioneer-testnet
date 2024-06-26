@@ -53,7 +53,7 @@ git clone https://github.com/JerryM28/pioneer-testnet
 
 cd pioneer-testnet
 
-npm instakl
+npm install
 
 ls
 
@@ -62,6 +62,9 @@ edit file rpc.txt dan privateKeys.json
 
 ```
 nano rpc.txt
+```
+```
+nano privateKeys.json
 ```
 isi dengan benar, jika sudah save. ctrl+x+y
 
