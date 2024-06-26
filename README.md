@@ -39,5 +39,5 @@ bisa memasukan 2 private key atau lebih
 ```
 lalu save
 
-# ini dijalankan di aplikasi termux
+# ini bisa dijalankan aplikasi termux
 
