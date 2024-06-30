@@ -2,10 +2,10 @@ const { ethers } = require('ethers');
 const colors = require('colors');
 const fs = require('fs');
 const readlineSync = require('readline-sync');
+const sleep = require('./src/sleep');
 
 const checkBalance = require('./src/checkBalance');
 const displayHeader = require('./src/displayHeader');
-const sleep = require('./src/sleep');
 
 const rpcUrl = fs.readFileSync('rpc.txt', 'utf8').trim();
 
@@ -13,6 +13,13 @@ const main = async () => {
   displayHeader();
 
   const privateKeys = JSON.parse(fs.readFileSync('privateKeys.json'));
+
+  // Meminta jumlah transaksi yang akan dieksekusi untuk semua wallet
+  let transactionCount = readlineSync.questionInt(
+    'Enter the number of transactions you want to send for each wallet: '
+  );
+
+  console.log();
 
   const provider = new ethers.JsonRpcProvider(rpcUrl);
 
@@ -50,12 +57,6 @@ const main = async () => {
 
     printSenderBalance();
 
-    const transactionCount = readlineSync.questionInt(
-      `Enter the number of transactions you want to send for address ${senderAddress}: `
-    );
-
-    console.log();
-
     for (let i = 1; i <= transactionCount; i++) {
       const receiverWallet = ethers.Wallet.createRandom();
       const receiverAddress = receiverWallet.address;
@@ -73,8 +74,7 @@ const main = async () => {
       );
 
       const transaction = {
- 
-       to: receiverAddress,
+        to: receiverAddress,
         value: amountToSend,
         gasLimit: 21000,
         gasPrice: gasPrice,
@@ -147,7 +147,6 @@ const main = async () => {
     );
   }
 
-  // Menghentikan proses Node.js setelah semua operasi selesai
   console.log(colors.green('All operations completed. Exiting script.'));
   process.exit(0);
 };
